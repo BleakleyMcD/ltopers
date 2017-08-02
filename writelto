@@ -7,6 +7,7 @@
 . "${SCRIPTDIR}/mmfunctions" || { echo "Missing '${SCRIPTDIR}/mmfunctions'. Exiting." ; exit 1 ; }
 
 SCRIPTDIR=$(dirname "${0}")
+. "${SCRIPTDIR}/mmfunctions" || { echo "Missing '${SCRIPTDIR}/mmfunctions'. Exiting." ; exit 1 ; }
 DEPENDENCIES=(gcp mmfunctions)
 TAPE_MOUNT_POINT="/Volumes"
 TAPE_SERIAL_REGEX="^[A-Z0-9]{6}(L[567])?$"
@@ -46,12 +47,12 @@ EOF
 }
 
 OPTIND=1
-while getopts ":ht:e:v" opt ; do
+while getopts ":t:e:vh" opt ; do
     case "${opt}" in
-        h) _usage ; exit 0 ;;
         t) TAPE_SERIAL="${OPTARG}" ;;
         e) TAPE_EJECT="${OPTARG}" ;;
         v) VERIFY="Y" ;;
+        h) _usage ; exit 0 ;;
         :) echo "Option -${OPTARG} requires an argument" ; exit 1 ;;
         *) echo "Bad option -${OPTARG}" ; _usage ; exit 1 ;;
     esac
