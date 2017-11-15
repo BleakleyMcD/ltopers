@@ -22,7 +22,6 @@
 - collectionchecksum
 - indexschemas
 
-
 ## Installing LTOpers
 
 You can easily install these tools using Homebrew. To install Homebrew, follow the [instructions](http://brew.sh/).
@@ -82,7 +81,7 @@ The script will format your tape in LTFS format, with no compression, and sets r
 
 **Remember to physically label the tape with the tape ID!**
 
-## Mounting LTO & Creating XMLs
+## Mounting LTO
 
 Put the tape you want to mount in the deck (you do not have to push it in all the way).
 
@@ -94,9 +93,11 @@ mountlto
 
 The script will check for attached tape drive, and will prompt for deck name if there are multiple drives.
 
-The tape will load in deck and mount. 
+The tape will load in deck and mount.
 
 In Finder, go to Go > Go to Folder, and enter /Volumes/$tapeid to navigate to tape in Finder.
+
+## Un-mounting LTO and creating XML
 
 To unmount the tape, Ctrl-C in Terminal.
 
@@ -120,6 +121,6 @@ LTOpers can integrate with the database reporting functions in [mediamicroservic
 
 If the database is activated and configured LTOpers will store information from LTO schema files, fixity information and PREMIS event information relating to LTOpers and microservices.
 
-Database-specific tools in LTOpers are `searchlto`, `ingestschemas` and `ingestcollectionchecksum`. Both `ingestchemas` and `ingestcollectionchecksum` are designed for importing already existing information to the database (LTO schema information and readback checksums respectively). They can be run either on individual files or on directories containing multiple files.
+Database-specific tools in LTOpers are `searchlto`, `ingestschemas` and `ingestcollectionchecksum`. Both `ingestchemas` and `ingestcollectionchecksum` are designed for importing already existing information to the database (LTO schema information and read back checksums respectively). They can be run either on individual files or on directories containing multiple files.
 
 `searchlto` is for performing searches against the LTO schema information stored in the database. It accepts either a media ID or an LTO ID as an input and will return a list of matching service files. Options are `-h` display help, `-c` compare characteristics of an input file to records in the database, and `-f` show full results (this will show all matches to search term as opposed filtering for service files only).
